@@ -9,18 +9,15 @@
         </div>
         <div class="p mt-5 jumbotron jumbotron-fluid">
           <div class="container">
-           <h1 class="display-4">توضیحات پروژ</h1>
-           <p class="lead">بخش فرانت با فریم ورکه nuxt زده شد . و بخش بک اند با لاراول  </p>
-           <p class="lead"> نوع احراز هویت از طریق توکن هست و داخل کوکی ذخیزه میشه </p>
+           <h1 class="display-4">Project description</h1>
+           <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem cum, sapiente a iure exercitationem possimus nihil ducimus tenetur dolorem deleniti voluptates eius saepe vitae aspernatur rerum quasi, similique libero accusantium! </p>
+           
         </div>
       </div>
       </div>
      </div>
   </template>
-<style>
-.p{
-  direction: rtl;
- }
-</style>
+
+
   
   

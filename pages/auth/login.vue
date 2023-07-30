@@ -27,7 +27,11 @@
     </div>
 </template>
 <script setup>
+definePageMeta({
+    middleware :'guest'
+})
 import {useToast} from "vue-toastification";
+const {authuser} = useAuth()
 const toast = useToast()
 const errors = ref([]);
 const formData = reactive({
@@ -43,6 +47,7 @@ async function login(){
             method : 'POST',
             body : formData
         })
+        authuser.value = user
         toast.success("با موفقیت  وارد شدید");
         return navigateTo('/')
     }catch(error){

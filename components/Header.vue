@@ -14,16 +14,20 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Posts</a>
+                        <NuxtLink class="nav-link" activeClass="active" to="/post">posts</NuxtLink>
+
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
-                    </li>
-                    <li class="nav-item">
+                   <div class="d-flex" v-if="authuser">
+                        <li class="nav-item">
+                            <NuxtLink class="nav-link" activeClass="active" to="/profile">Profile</NuxtLink>
+                        </li>
+                            <li class="nav-item">
                         <a class="nav-link" @click="logout" href="#">Logout</a>
-                    </li>
+                        </li>
+                   </div>
+                   <div class="d-flex" v-else>
                     <li class="nav-item">
                         <NuxtLink class="nav-link" activeClass="active" to="/auth/register">Register</NuxtLink>
                     </li>
@@ -31,6 +35,7 @@
                         <NuxtLink class="nav-link" activeClass="active" to="/auth/login">login</NuxtLink>
 
                     </li>
+                  </div>
                 </ul>
             </div>
         </div>
@@ -38,11 +43,16 @@
 </template>
 <script setup>
    import {useToast} from "vue-toastification";
+   const {authuser} = useAuth()
    const toast = useToast()
    async function logout(){
+       const headers = useRequestHeaders(['cookie'])
        await useFetch('/api/auth/logout',{
-            method:'POST'
+            method:'POST',
+            headers
         })
+        authuser.value = null;
         toast.warning("از حساب خود خارج شدید ");
+
    }
 </script>
