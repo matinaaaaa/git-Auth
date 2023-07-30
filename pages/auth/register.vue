@@ -43,14 +43,17 @@ const formData = reactive({
     c_password:"",
 });
 async function Register(){
+   
     try{
         const user = await $fetch('/api/auth/register',{
             method : 'POST',
             body : formData
         })
         toast.success(" اطلاعات شما با موفقیت ثبت شد");
+        console.log(user)
         return navigateTo('/')
     }catch(error){
+
        errors.value = Object.values(error.data.data).flat()
        console.log(Object.values(error.data.data).flat() , 'client error')
        
@@ -60,17 +63,6 @@ async function Register(){
        formData.c_password = ''
     }
 }
-// async function Register(){
-//    try {
-//      const user = await $fetch('/api/auth/register',{
-//      method : 'POST',
-//      body: formData
-//      })
-//         console.log(user);
-//    } catch (error) {
-//       errors.value = Object.values(error.data.data ).flat()
-     
-//    }
-   
-// }
+
+
 </script>

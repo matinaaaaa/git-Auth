@@ -1,7 +1,7 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
         <div class="container">
-            <NuxtLink class="navbar-brand" to="/">webprog.io</NuxtLink>
+            <NuxtLink class="navbar-brand" to="/">Dragon.io</NuxtLink>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -37,11 +37,12 @@
     </nav>
 </template>
 <script setup>
-   
+   import {useToast} from "vue-toastification";
+   const toast = useToast()
    async function logout(){
-        const {data} = await useFetch('/api/auth/logout',{
+       await useFetch('/api/auth/logout',{
             method:'POST'
         })
-        console.log(data)
+        toast.warning("از حساب خود خارج شدید ");
    }
 </script>

@@ -10,15 +10,14 @@ export default defineEventHandler(async (event) => {
                 'Accept': 'application/json',
             }
         })
-        
-        setCookie(event, 'token', data.token, {
-            httpOnly: true,
-            secure: true,
-            maxAge: 60 * 60 * 24 * 7, // 1 week
-            path: '/'
+        setCookie(event , 'token' , data.token , {
+            httpOnly:true,
+            secure:true,
+            maxAge:60 * 60 * 24 * 7, // 1 week
+            path:'/'
         })
-        console.log(token)
-        return data;
+      
+        return data.user;
     } catch (error) {
         return error
     }
